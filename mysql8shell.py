@@ -56,16 +56,16 @@ column_count = my_res.get_column_count()
 
 for i in range(0,column_count):
     if i < column_count - 1:
-        print "{0}, ".format(column_names[i]),
+        print ("{0}, ".format(column_names[i])),
     else:
-        print "{0}".format(column_names[i]),
+        print ("{0}".format(column_names[i])),
 print
 for row in my_res.fetch_all():
     for i in range(0,column_count):
         if i < column_count - 1:
-            print "{0}, ".format(row[i]),
+            print ("{0}, ".format(row[i])),
         else:
-            print "{0}".format(row[i]),
+            print ("{0}".format(row[i])),
     print
 
 # Update a row
@@ -74,7 +74,7 @@ my_res = my_tbl.select(COLUMNS).execute()
 
 # Display the results
 for row in my_res.fetch_all():
-    print row
+    print (row)
     
     
 # Delete some rows
@@ -85,5 +85,5 @@ print("\nShowing results after deleting rows with nombre = Lorem ")
 my_res = my_tbl.select(COLUMNS).execute()
 # Display the results
 for row in my_res.fetch_all():
-    print row
+    print (row)
 
