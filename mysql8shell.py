@@ -6,34 +6,40 @@
 from mysqlsh import mysqlx # needed in case you run the code outside of the shell
 # SQL CREATE TABLE statement
 CREATE_TBL = """
-CREATE TABLE `factory_sensors`.`trailer_assembly` (
-  `id` int auto_increment,
-  `sensor_name` char(30) NOT NULL,
-  `sensor_value` float DEFAULT NULL,
-  `sensor_event` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `sensor_units` char(15) DEFAULT NULL,
-  PRIMARY KEY `sensor_id` (`id`)
+CREATE TABLE `SuperPY`.`Caixer` (
+  `Id_Caixer` int auto_increment,
+  `DNI_Caixer` varchar(9) NOT NULL UNIQUE,
+  `Nom_Caixer` char(30) NOT NULL,
+  `Cognom_Caixer` char(30) NOT NULL,
+  `Ntelf_Caixer` varchar(9) NOT NULL UNIQUE,
+  PRIMARY KEY `Id_Caixer` (`Id_Caixer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 """
+
 # column list, user data structure
-COLUMNS = ['sensor_name', 'sensor_value', 'sensor_units']
+COLUMNS = ['DNI_Caixer', 'Nom_Caixer', 'Cognom_Caixer', 'Ntelf_Caixer']
 user_info = {
   'host': 'localhost',
   'port': 33060,
   'user': 'root',
   'password': 'root',
 }
-print("Listing 4-6 Example - Python X DevAPI Demo with Relational Data.")
+
 # Get a session (connection)
 my_session = mysqlx.get_session(user_info)
+
 # Precautionary drop schema
-my_session.drop_schema('factory_sensors')
+my_session.drop_schema('SuperPY')
+
 # Create the database (schema)
-my_db = my_session.create_schema('factory_sensors')
+my_db = my_session.create_schema('SuperPY')
+
 # Execute the SQL statement to create the table
 sql_res = my_session.sql(CREATE_TBL).execute()
+
 # Get the table object
-my_tbl = my_db.get_table('trailer_assembly')
+my_tbl = my_db.get_table('SuperPY')
+
 # Insert some rows (data)
 my_tbl.insert(COLUMNS).values('paint_vat_temp', 32.815, 'Celsius').execute()
 my_tbl.insert(COLUMNS).values('tongue_height_variance', 1.52, 'mm').execute()
