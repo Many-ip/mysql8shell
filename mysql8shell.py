@@ -20,11 +20,13 @@ CREATE TABLE `SuperPY`.`Caixer` (
 COLUMNS = ['DNI_Caixer', 'Nom_Caixer', 'Cognom_Caixer', 'Ntelf_Caixer']
 user_info = {
   'host': 'localhost',
-  'port': 33060,
+  'port': 3306,
   'user': 'root',
   'password': 'root',
 }
 
+
+print("Listing 4-6 Example - Python X DevAPI Demo with Relational Data.")
 # Get a session (connection)
 my_session = mysqlx.get_session(user_info)
 
@@ -81,7 +83,7 @@ for row in my_res.fetch_all():
 my_tbl.delete().where("Id_Caixer LIKE 3").execute()
 
 # Execute a simple select (SELECT ∗ FROM)
-print("\nShowing results after deleting rows with nombre = Lorem ")
+print("\nShowing results after deleting rows with ID 3)
 my_res = my_tbl.select(COLUMNS).execute()
 # Display the results
 for row in my_res.fetch_all():
