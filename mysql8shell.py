@@ -38,7 +38,7 @@ my_db = my_session.create_schema('SuperPY')
 sql_res = my_session.sql(CREATE_TBL).execute()
 
 # Get the table object
-my_tbl = my_db.get_table('SuperPY')
+my_tbl = my_db.get_table('Caixer')
 
 # Insert some rows (data)
 my_tbl.insert(COLUMNS).values('42345678A','caixer1','cognom1','987654321').execute()
